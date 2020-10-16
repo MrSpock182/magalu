@@ -1,3 +1,10 @@
 magalu:
   integration:
-    viacep: "https://viacep.com.br/ws"
+    postmon: "https://api.postmon.com.br"
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
