@@ -1,25 +1,32 @@
 package io.com.github.mrspock182.magalu.integration.implementation;
 
+import feign.FeignException;
 import io.com.github.mrspock182.magalu.adapter.Adapter;
 import io.com.github.mrspock182.magalu.dto.ClientCepResponse;
-import io.com.github.mrspock182.magalu.dto.ViaCepResponse;
+import io.com.github.mrspock182.magalu.dto.PostmonResponse;
+import io.com.github.mrspock182.magalu.exception.NotFoundException;
 import io.com.github.mrspock182.magalu.integration.SearchCepIntegration;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SearchCepIntegrationImpl implements SearchCepIntegration {
 
-    private final ViaCepIntegrationWithFeign integration;
-    private final Adapter<ClientCepResponse, ViaCepResponse> adapter;
+    private final PostmonIntegrationWithFeign integration;
+    private final Adapter<ClientCepResponse, PostmonResponse> adapter;
 
-    public SearchCepIntegrationImpl(ViaCepIntegrationWithFeign integration,
-                                    Adapter<ClientCepResponse, ViaCepResponse> adapter) {
+    public SearchCepIntegrationImpl(PostmonIntegrationWithFeign integration,
+                                    Adapter<ClientCepResponse, PostmonResponse> adapter) {
         this.integration = integration;
         this.adapter = adapter;
     }
 
     @Override
     public ClientCepResponse searchCep(String cep) {
-        return adapter.cast(integration.getAddress(cep));
+        try {
+            PostmonResponse response = integration.getAddress(cep);
+            return adapter.cast(response);
+        } catch (FeignException ex) {
+            throw new NotFoundException(ex);
+        }
     }
 }

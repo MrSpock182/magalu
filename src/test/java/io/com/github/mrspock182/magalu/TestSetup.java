@@ -1,13 +1,19 @@
 package io.com.github.mrspock182.magalu;
 
-import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import br.com.six2six.fixturefactory.loader.FixtureFactoryLoader;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.runner.RunWith;
+import org.mockito.junit.MockitoJUnitRunner;
 
-@SpringBootTest
-class MagaluApplicationTests {
+@RunWith(MockitoJUnitRunner.class)
+public abstract class TestSetup {
 
-	@Test
-	void contextLoads() {
+	@BeforeAll
+	public static void setUp() {
+		FixtureFactoryLoader.loadTemplates("io.com.github.mrspock182.magalu");
 	}
 
+	@Before
+	public abstract void init();
 }
