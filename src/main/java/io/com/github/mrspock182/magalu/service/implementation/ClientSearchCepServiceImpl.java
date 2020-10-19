@@ -1,8 +1,6 @@
 package io.com.github.mrspock182.magalu.service.implementation;
 
-import feign.FeignException;
-import io.com.github.mrspock182.magalu.dto.ClientCepResponse;
-import io.com.github.mrspock182.magalu.exception.BadRequestException;
+import io.com.github.mrspock182.magalu.domain.dto.ClientCepResponse;
 import io.com.github.mrspock182.magalu.exception.NotFoundException;
 import io.com.github.mrspock182.magalu.integration.SearchCepIntegration;
 import io.com.github.mrspock182.magalu.service.CepValidatorService;

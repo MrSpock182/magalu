@@ -11,6 +11,9 @@ project:
   description: @project.description@
 
 magalu:
+  jwt:
+    secret: Cl4ss1c1n3F0rJWTS3cr3tSignatureAlgorithmM0vi3sF0rL1f3512bitsKeySize
+    expiration: 1000000
   integration:
     postmon: "https://api.postmon.com.br"
 

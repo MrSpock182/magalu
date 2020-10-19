@@ -2,8 +2,8 @@ package io.com.github.mrspock182.magalu.adapter;
 
 import io.com.github.mrspock182.magalu.TestSetup;
 import io.com.github.mrspock182.magalu.adapter.implementation.AdapterPostmonResponseToClientCepResponse;
-import io.com.github.mrspock182.magalu.dto.ClientCepResponse;
-import io.com.github.mrspock182.magalu.dto.PostmonResponse;
+import io.com.github.mrspock182.magalu.domain.dto.ClientCepResponse;
+import io.com.github.mrspock182.magalu.domain.dto.PostmonResponse;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
