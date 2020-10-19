@@ -1,3 +1,6 @@
+![magalu](https://user-images.githubusercontent.com/7126514/96477917-757e0500-120d-11eb-87f2-fac8390d8ccd.jpg)
+
+
 # API Pesquisa CEP
 
 ## Como Excutar
