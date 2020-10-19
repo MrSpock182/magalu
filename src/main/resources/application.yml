@@ -14,6 +14,11 @@ magalu:
   integration:
     postmon: "https://api.postmon.com.br"
 
+rollbar:
+  token: ae2c5730f60040b8a68a18cc5053b1a4
+  environment: production
+  version: 1.0.0
+
 feign:
   client:
     config:
