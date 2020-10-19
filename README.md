@@ -34,3 +34,9 @@ Para visualizar as metricas da aplicação acesse o endpoint: http://localhost:8
 Escolhi utilizar uma ferramenta de log centralizado chamada rollbar (porque ela é gratuita), como para o contexto da aplicação não vi sentido _logar_ o _payload_, realizei logs apenas de erros internos da aplicação.
 
 ![log_centralizado](https://user-images.githubusercontent.com/7126514/96518036-5cdb1280-1240-11eb-9bc5-b0b7ef759167.png)
+
+## Preferencias das tecnologias  
+Optei por trabalhar com java, pois é uma linguagem que domino e o framework do Spring facilita a vida do desenvolvedor em varias tarefas complexas, como APIs de metricas, entre outras. Escolhi adicionar um pouco de Kotlin também pois ela tem um contexto de linguagem menos verboso e colabora com o Clean Architecture, pois não temos a necessidade de criar uma grande quantidade de _gets_, e também não precisamos utilizar dependências externas dentro do nucleo da aplicação, assim ganhamos a agilidade que temos com o lombok, dentro da propria JVM, sem quebrar alguns conceitos de qualidade de arquitetura.
+
+# Atividade 2
+
