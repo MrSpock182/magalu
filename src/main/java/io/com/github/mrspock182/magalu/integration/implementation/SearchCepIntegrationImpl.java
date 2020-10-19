@@ -2,8 +2,8 @@ package io.com.github.mrspock182.magalu.integration.implementation;
 
 import feign.FeignException;
 import io.com.github.mrspock182.magalu.adapter.Adapter;
-import io.com.github.mrspock182.magalu.dto.ClientCepResponse;
-import io.com.github.mrspock182.magalu.dto.PostmonResponse;
+import io.com.github.mrspock182.magalu.domain.dto.ClientCepResponse;
+import io.com.github.mrspock182.magalu.domain.dto.PostmonResponse;
 import io.com.github.mrspock182.magalu.exception.NotFoundException;
 import io.com.github.mrspock182.magalu.integration.SearchCepIntegration;
 import org.springframework.stereotype.Component;

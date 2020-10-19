@@ -1,4 +1,4 @@
-package io.com.github.mrspock182.magalu.dto
+package io.com.github.mrspock182.magalu.domain.dto
 
 import java.util.*
 

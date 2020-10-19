@@ -1,7 +1,7 @@
 package io.com.github.mrspock182.magalu.service;
 
 import io.com.github.mrspock182.magalu.TestSetup;
-import io.com.github.mrspock182.magalu.dto.ClientCepResponse;
+import io.com.github.mrspock182.magalu.domain.dto.ClientCepResponse;
 import io.com.github.mrspock182.magalu.exception.BadRequestException;
 import io.com.github.mrspock182.magalu.exception.NotFoundException;
 import io.com.github.mrspock182.magalu.integration.SearchCepIntegration;

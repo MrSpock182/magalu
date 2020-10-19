@@ -1,4 +1,4 @@
-package io.com.github.mrspock182.magalu.dto
+package io.com.github.mrspock182.magalu.domain.dto
 
 data class PostmonResponse(@get:JvmName("getBairro") val bairro: String,
                       @get:JvmName("getCidade") val cidade: String,
