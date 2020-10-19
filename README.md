@@ -7,3 +7,8 @@
 Para executar o projeto basta _startar_ a classe MagaluApplication
 
 ![application_start](https://user-images.githubusercontent.com/7126514/96477507-f7b9f980-120c-11eb-8cd7-8d5cdaa700fb.png)
+
+## Swagger
+Caso tenha necessidade de saber os _endpoints_, _requests_ e _responses_ que a aplicação pode retornar, acesse o swagger da aplicação em:
+
+localhost:8090/swagger-ui.html
