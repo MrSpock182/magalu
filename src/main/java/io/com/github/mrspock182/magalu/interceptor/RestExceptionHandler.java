@@ -5,10 +5,10 @@ import io.com.github.mrspock182.magalu.exception.BadRequestException;
 import io.com.github.mrspock182.magalu.exception.InternalServerErrorException;
 import io.com.github.mrspock182.magalu.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
 
 import java.util.Date;
 
@@ -18,9 +18,9 @@ public class RestExceptionHandler {
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handleNotFound(final NotFoundException notFound,
-                                        final ServerHttpRequest serverHttpRequest) {
+                                        final WebRequest request) {
         return new ErrorResponse(new Date(),
-                serverHttpRequest.getURI().getPath(),
+                request.getContextPath(),
                 HttpStatus.NOT_FOUND.value(),
                 HttpStatus.NOT_FOUND.getReasonPhrase(),
                 notFound.getMessage());
@@ -29,9 +29,9 @@ public class RestExceptionHandler {
     @ExceptionHandler(BadRequestException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleBadRequest(final BadRequestException badRequest,
-                                          final ServerHttpRequest serverHttpRequest) {
+                                          final WebRequest request) {
         return new ErrorResponse(new Date(),
-                serverHttpRequest.getURI().getPath(),
+                request.getContextPath(),
                 HttpStatus.BAD_REQUEST.value(),
                 HttpStatus.BAD_REQUEST.getReasonPhrase(),
                 badRequest.getMessage());
@@ -40,9 +40,9 @@ public class RestExceptionHandler {
     @ExceptionHandler(InternalServerErrorException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleInternalServerError(final InternalServerErrorException internalServerError,
-                                                   final ServerHttpRequest serverHttpRequest) {
+                                                   final WebRequest request) {
         return new ErrorResponse(new Date(),
-                serverHttpRequest.getURI().getPath(),
+                request.getContextPath(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase(),
                 internalServerError.getMessage());

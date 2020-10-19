@@ -1,3 +1,15 @@
+server:
+  port: 8090
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: Magalu
+
+project:
+  version: @project.version@
+  description: @project.description@
+
 magalu:
   integration:
     postmon: "https://api.postmon.com.br"
