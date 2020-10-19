@@ -12,3 +12,12 @@ Para executar o projeto basta _startar_ a classe MagaluApplication
 Caso tenha necessidade de saber os _endpoints_, _requests_ e _responses_ que a aplicação pode retornar, acesse o swagger da aplicação em:
 
 localhost:8090/swagger-ui.html
+
+![swagger](https://user-images.githubusercontent.com/7126514/96514173-a6742f00-1239-11eb-9146-8761e38fc6bc.png)
+
+Token de Autenticação: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwMzExOTM4MywiZXhwIjoxNjA0MTE5MzgzfQ.-WphXqOJPA-ngJtDD3_aM4sglE2YuCPQoUgcmIYJgW4m5aZQl97A4VvrEiTIlVMtqC2cQ2h6_c4SUQ8kO8PATA
+
+## API Externa
+Essa API realizar o consumo de CEP do serviço postmon
+Documentação: https://postmon.com.br/
+
