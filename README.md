@@ -27,3 +27,5 @@ Para visualizar a saude da aplicação acesse o endpoint: http://localhost:8090/
 ![health](https://user-images.githubusercontent.com/7126514/96516850-3b792700-123e-11eb-8467-0e0ed90908d5.png)
 
 Para visualizar as metricas da aplicação acesse o endpoint: http://localhost:8090/actuator/metrics
+
+![metrics](https://user-images.githubusercontent.com/7126514/96517087-a7f42600-123e-11eb-8dc6-0087dc74f5b0.png)
