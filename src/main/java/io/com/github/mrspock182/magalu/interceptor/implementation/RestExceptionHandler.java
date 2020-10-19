@@ -1,9 +1,10 @@
-package io.com.github.mrspock182.magalu.interceptor;
+package io.com.github.mrspock182.magalu.interceptor.implementation;
 
 import io.com.github.mrspock182.magalu.dto.ErrorResponse;
 import io.com.github.mrspock182.magalu.exception.BadRequestException;
 import io.com.github.mrspock182.magalu.exception.InternalServerErrorException;
 import io.com.github.mrspock182.magalu.exception.NotFoundException;
+import io.com.github.mrspock182.magalu.interceptor.StackLogger;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -14,6 +15,12 @@ import java.util.Date;
 
 @RestControllerAdvice
 public class RestExceptionHandler {
+
+    private final StackLogger stackLogger;
+
+    public RestExceptionHandler(StackLogger stackLogger) {
+        this.stackLogger = stackLogger;
+    }
 
     @ExceptionHandler(NotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -41,6 +48,7 @@ public class RestExceptionHandler {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleInternalServerError(final InternalServerErrorException internalServerError,
                                                    final WebRequest request) {
+        stackLogger.log(internalServerError);
         return new ErrorResponse(new Date(),
                 request.getContextPath(),
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),

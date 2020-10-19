@@ -62,12 +62,18 @@
 			<version>${swagger.version}</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>io.springfox</groupId>
 			<artifactId>springfox-swagger2</artifactId>
 			<version>${swagger.version}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<!-- Log -->
+		<dependency>
+			<groupId>com.rollbar</groupId>
+			<version>[1.0,)</version>
+			<artifactId>rollbar-java</artifactId>
 		</dependency>
 
 		<!-- TEST -->
