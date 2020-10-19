@@ -1,6 +1,6 @@
 package io.com.github.mrspock182.magalu.configuration;
 
-import io.com.github.mrspock182.magalu.domain.bean.Authorization;
+import io.com.github.mrspock182.magalu.domain.bean.AuthorizationApp;
 import io.com.github.mrspock182.magalu.domain.bean.User;
 import io.com.github.mrspock182.magalu.exception.Unauthorized;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -18,43 +18,34 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Configuration
-public class AuthenticationManager extends OncePerRequestFilter {
+public class AuthenticationFilter extends OncePerRequestFilter {
 
-    private final AuthenticationValidationWithJwt auth;
+    private final AuthenticationValidationWithJwt authenticationValidation;
 
-    public AuthenticationManager(AuthenticationValidationWithJwt auth) {
-        this.auth = auth;
+    public AuthenticationFilter(AuthenticationValidationWithJwt authenticationValidation) {
+        this.authenticationValidation = authenticationValidation;
     }
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
-                                    FilterChain chain) throws ServletException, IOException {
-        validateToken(getAuthorization(request), request);
-        chain.doFilter(request, response);
-    }
-
-    private Authorization getAuthorization(HttpServletRequest request) {
-        try {
-            final String requestTokenHeader = request.getHeader("Authorization");
-            if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
-                return new Authorization(requestTokenHeader.substring(7),
-                        auth.getUsernameFromToken(requestTokenHeader.substring(7)));
+                                    FilterChain chain) throws IOException, ServletException {
+        AuthorizationApp authorizationApp = null;
+        final String requestTokenHeader = request.getHeader("Authorization");
+        if (requestTokenHeader != null && requestTokenHeader.startsWith("Bearer ")) {
+            try {
+                authorizationApp = new AuthorizationApp(requestTokenHeader.substring(7),
+                        authenticationValidation.getUsernameFromToken(requestTokenHeader.substring(7)));
+            } catch (IllegalArgumentException e) {
+                throw new Unauthorized("Unable to get JWT Token");
+            } catch (ExpiredJwtException e) {
+                throw new Unauthorized("JWT Token has expired");
             }
-            throw new Unauthorized("Header without Authorization");
-        } catch (IllegalArgumentException e) {
-            throw new Unauthorized("Unable to get JWT Token");
-        } catch (ExpiredJwtException e) {
-            throw new Unauthorized("JWT Token has expired");
-        } catch (Exception e) {
-            throw new Unauthorized("Failed to validate JWT Token");
         }
-    }
 
-    private void validateToken(Authorization authorization, HttpServletRequest request) {
-        if (SecurityContextHolder.getContext().getAuthentication() == null) {
+        if (authorizationApp != null && SecurityContextHolder.getContext().getAuthentication() == null) {
             UserDetails userDetails = new User();
-            if (Boolean.TRUE.equals(auth.validateToken(authorization.getToken()))) {
+            if (Boolean.TRUE.equals(authenticationValidation.validateToken(authorizationApp.getToken()))) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails, null, userDetails.getAuthorities());
@@ -63,6 +54,7 @@ public class AuthenticationManager extends OncePerRequestFilter {
                 SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
             }
         }
+        chain.doFilter(request, response);
     }
 
 }
