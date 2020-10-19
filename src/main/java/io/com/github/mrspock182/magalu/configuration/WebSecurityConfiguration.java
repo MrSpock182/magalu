@@ -1,7 +1,6 @@
 package io.com.github.mrspock182.magalu.configuration;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -16,14 +15,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationEntryPointApp authenticationEntryPoint;
-    private final AuthenticationValidationWithJwt authenticationValidation;
     private final AuthenticationFilter authenticationFilter;
 
     public WebSecurityConfiguration(AuthenticationEntryPointApp authenticationEntryPoint,
-                                    AuthenticationValidationWithJwt authenticationValidation,
                                     AuthenticationFilter authenticationFilter) {
         this.authenticationEntryPoint = authenticationEntryPoint;
-        this.authenticationValidation = authenticationValidation;
         this.authenticationFilter = authenticationFilter;
     }
 
