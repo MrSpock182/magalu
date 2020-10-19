@@ -29,3 +29,8 @@ Para visualizar a saude da aplicação acesse o endpoint: http://localhost:8090/
 Para visualizar as metricas da aplicação acesse o endpoint: http://localhost:8090/actuator/metrics
 
 ![metrics](https://user-images.githubusercontent.com/7126514/96517087-a7f42600-123e-11eb-8dc6-0087dc74f5b0.png)
+
+## LOG
+Escolhi utilizar uma ferramenta de log centralizado chamada rollbar (porque ela é gratuita), como para o contexto da aplicação não vi sentido _logar_ o _payload_, realizei logs apenas de erros internos da aplicação.
+
+![log_centralizado](https://user-images.githubusercontent.com/7126514/96518036-5cdb1280-1240-11eb-9bc5-b0b7ef759167.png)
