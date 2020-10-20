@@ -21,7 +21,7 @@ Token de Autenticação: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJ
 Essa API realizar o consumo de CEP do serviço postmon
 Documentação: https://postmon.com.br/
 
-## Monitaramento
+## Monitoramento 
 Para visualizar a saude da aplicação acesse o endpoint: http://localhost:8090/actuator/health
 
 ![health](https://user-images.githubusercontent.com/7126514/96516850-3b792700-123e-11eb-8467-0e0ed90908d5.png)
