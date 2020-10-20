@@ -12,6 +12,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 import static org.mockito.Mockito.*;
 import static org.mockito.Mockito.verify;
 
@@ -41,6 +43,13 @@ public class ClientSearchCepServiceImplTest extends TestSetup {
         service.search("01311000");
         verify(integration).searchCep("01311000");
         verify(cepValidatorService).validate("01311000");
+    }
+
+    @Test
+    public void searchCepResponseNullTest() {
+        when(integration.searchCep("01311000")).thenReturn(null);
+        ClientCepResponse response = service.search("01311000");
+        assertNull(response);
     }
 
     @Test

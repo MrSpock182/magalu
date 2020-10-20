@@ -26,6 +26,6 @@ public class StackLoggerWithRollbar implements StackLogger {
             sb.append(String.format("Line Error: %d", stack.getLineNumber())).append('\n');
         }
 
-        this.rollbar.error(sb.toString());
+        this.rollbar.critical(sb.toString());
     }
 }

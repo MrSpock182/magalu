@@ -14,11 +14,9 @@ public class RollbarConfiguration {
     private final Rollbar rollbar;
 
     public RollbarConfiguration(@Value("${rollbar.token}") String token,
-                                @Value("${rollbar.environment}") String environment,
-                                @Value("${rollbar.version}") String version) {
+                                @Value("${rollbar.environment}") String environment) {
         Config config = withAccessToken(token)
                 .environment(environment)
-                .codeVersion(version)
                 .build();
         this.rollbar = Rollbar.init(config);
     }
