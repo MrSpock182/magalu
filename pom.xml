@@ -21,6 +21,31 @@
 		<kotlin.version>1.4.10</kotlin.version>
 		<swagger.version>2.9.2</swagger.version>
 		<spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+
+		<sonar.junit.reportPaths>
+			target/surefire-reports
+		</sonar.junit.reportPaths>
+		<sonar.exclusions>
+			**/api/*.java,
+			**/api/**/*.java,
+			**/api/*.kt,
+			**/api/**/*.kt,
+			**/configuration/*.java,
+			**/configuration/**/*.java,
+			**/domain/*.java,
+			**/domain/**/*.java,
+			**/domain/*.kt,
+			**/domain/**/*.kt,
+			**/exception/*.java,
+			**/exception/**/*.java,
+			**/integration/*.java,
+			**/integration/**/*.java,
+			**/interceptor/*.java,
+			**/interceptor/**/*.java,
+			**/MagaluApplication.java
+		</sonar.exclusions>
+
+		<sonar.jacoco.excludes>*domain*,*generated*,*exception*</sonar.jacoco.excludes>
 	</properties>
 
 	<dependencies>
@@ -147,6 +172,13 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.jetbrains.kotlin</groupId>
@@ -189,6 +221,66 @@
 						<goals>
 							<goal>testCompile</goal>
 						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.6</version>
+				<configuration>
+					<excludes>
+						<exclude>**/api/*.*</exclude>
+						<exclude>**/api/**/*.*</exclude>
+						<exclude>**/configuration/*.*</exclude>
+						<exclude>**/configuration/**/*.*</exclude>
+						<exclude>**/domain/*.*</exclude>
+						<exclude>**/domain/**/*.*</exclude>
+						<exclude>**/exception/*.*</exclude>
+						<exclude>**/exception/**/*.*</exclude>
+						<exclude>**/integration/*.*</exclude>
+						<exclude>**/integration/**/*.*</exclude>
+						<exclude>**/interceptor/*.*</exclude>
+						<exclude>**/interceptor/**/*.*</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>default-report</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+						<configuration>
+							<dataFile>target/jacoco.exec</dataFile>
+							<outputDirectory>target/jacoco-ut</outputDirectory>
+						</configuration>
+					</execution>
+					<execution>
+						<id>default-check</id>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<configuration>
+							<rules>
+								<rule>
+									<element>BUNDLE</element>
+									<limits>
+										<limit>
+											<counter>LINE</counter>
+											<value>COVEREDRATIO</value>
+											<minimum>0.80</minimum>
+										</limit>
+									</limits>
+								</rule>
+							</rules>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>

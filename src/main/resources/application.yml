@@ -7,6 +7,19 @@ spring:
   application:
     name: Magalu
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, metrics
+  metrics:
+    export:
+      atlas:
+        enabled: false
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+
 project:
   version: @project.version@
   description: @project.description@
@@ -19,9 +32,8 @@ magalu:
     postmon: "https://api.postmon.com.br"
 
 rollbar:
-  token: ae2c5730f60040b8a68a18cc5053b1a4
+  token: adcd6aa3279343b2a7f328348c2311aa
   environment: production
-  version: 1.0.0
 
 feign:
   client:

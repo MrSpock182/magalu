@@ -27,6 +27,7 @@ public class ClientSearchCepServiceImpl implements ClientSearchCepService {
             try {
                 cepValidatorService.validate(cep);
                 response = integration.searchCep(cep);
+                count--;
             } catch (NotFoundException ex) {
                 cep = replace(cep, count);
                 count--;
