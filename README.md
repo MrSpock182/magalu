@@ -48,3 +48,5 @@ Optei por trabalhar com java, pois é uma linguagem que domino e o framework do 
 # Atividade 2
 #### Quando você digita a URL de um site (http://www.netshoes.com.br) no browser e pressiona enter, explique da forma que preferir, o que ocorre nesse processo do protocolo HTTP entre o Client e o Server?
 
+O _client_ (frontend) irá consultar interfaces de um ou mais _servers_ (backend), essas interfaces vão estar sobre o protocolo HTTP, e muito provavelmente estaram utilizando serviços REST (vale observar que embora o rest seja o serviço mais utilizado, existem outras formas de comunicação).
+As interfaces do _server_ terá um método, podendo ser ele _GET_, _POST_, _DELETE_, etc. Baseado no método da interface, o _client_ deverá enviar um _payload_ correspondente a ação que deseja executar, e após o processamento do lado _server_ será enviado uma _response_, essa comunicação é feita através de contratos bem estabelecidos, então geralmente tem baixo nivel a mudança, pois impacta as duas pontas. 
