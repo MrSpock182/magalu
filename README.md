@@ -18,7 +18,7 @@ http://localhost:8090/swagger-ui.html
 Token de Autenticação: Bearer eyJhbGciOiJIUzUxMiJ9.eyJyb2xlIjpbIlJPTEVfVVNFUiJdLCJzdWIiOiJhZG1pbiIsImlhdCI6MTYwMzExOTM4MywiZXhwIjoxNjA0MTE5MzgzfQ.-WphXqOJPA-ngJtDD3_aM4sglE2YuCPQoUgcmIYJgW4m5aZQl97A4VvrEiTIlVMtqC2cQ2h6_c4SUQ8kO8PATA
 
 ## API Externa
-Essa API realizar o consumo de CEP do serviço postmon
+Essa API realiza o consumo de CEP do serviço postmon
 Documentação: https://postmon.com.br/
 
 ## Monitoramento 
