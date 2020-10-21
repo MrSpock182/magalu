@@ -40,7 +40,7 @@ Para verificar a qualidade do código que estou produzindo utilizo o sonar, aqui
 
 ![qualidade](https://user-images.githubusercontent.com/7126514/96524142-d4636e80-124d-11eb-8528-a25c5d217cfe.png)
 
-Obs.: Não sei porque o sonarqube está apresentando 97.4% (rodando o coverage do IntelliJ está com 100%)
+Obs.: Por algum motivo o sonarqube está apresentando 97.4% (rodando o coverage do IntelliJ está com 100%)
 
 ## Preferencias das tecnologias  
 Optei por trabalhar com java, pois é uma linguagem que domino e o framework do Spring facilita a vida do desenvolvedor em varias tarefas complexas, como APIs de metricas, entre outras. Escolhi adicionar um pouco de Kotlin também pois ela tem um contexto de linguagem menos verboso e colabora com o Clean Architecture, pois não temos a necessidade de criar uma grande quantidade de _gets_, e também não precisamos utilizar dependências externas dentro do nucleo da aplicação, assim ganhamos a agilidade que temos com o lombok, dentro da propria JVM, sem quebrar alguns conceitos de qualidade de arquitetura.
